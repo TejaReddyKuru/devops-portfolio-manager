@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section form-page">
+    <h2>Add Project</h2>
+    <form action="/admin/add-project" method="POST" class="form-grid">
+        <label>Project Title</label>
+        <input type="text" name="title" required />
+
+        <label>Description</label>
+        <textarea name="description" rows="4" required></textarea>
+
+        <label>Project Link</label>
+        <input type="url" name="link" placeholder="https://" required />
+
+        <button type="submit" class="button">Save Project</button>
+    </form>
+</section>
+{% endblock %}

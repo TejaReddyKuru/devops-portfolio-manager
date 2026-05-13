@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Welcome to My DevOps Portfolio</h1>
+        <p>Simple portfolio manager to learn GitHub workflow, Docker, CI/CD, Flask, and frontend basics.</p>
+        <a href="#projects" class="button">View Projects</a>
+    </div>
+    <div class="hero-image"></div>
+</section>
+
+<section class="section skills" id="skills">
+    <h2>Skills</h2>
+    <div class="card-grid">
+        <div class="card">Python<br><span>Backend logic</span></div>
+        <div class="card">HTML & CSS<br><span>Page structure</span></div>
+        <div class="card">JavaScript<br><span>Interactions</span></div>
+        <div class="card">Docker<br><span>Container setup</span></div>
+    </div>
+</section>
+
+<section class="section projects" id="projects">
+    <h2>Projects</h2>
+    <div class="card-grid">
+        {% if projects %}
+            {% for project in projects %}
+                <div class="card project-card">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <a href="{{ project.link }}" target="_blank">View Project</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No project entries yet. Log in to admin and add projects.</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section github-section">
+    <h2>GitHub Repositories</h2>
+    <div class="card-grid">
+        {% if github_repos %}
+            {% for repo in github_repos %}
+                <div class="card repo-card">
+                    <h3>{{ repo.name }}</h3>
+                    <p>{{ repo.description or 'No description' }}</p>
+                    <a href="{{ repo.html_url }}" target="_blank">Visit Repo</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>GitHub repository data is not available right now.</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section contact" id="contact">
+    <h2>Contact</h2>
+    <form action="/contact" method="POST" class="form-grid">
+        <label>Name</label>
+        <input type="text" name="name" required />
+
+        <label>Email</label>
+        <input type="email" name="email" required />
+
+        <label>Message</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit" class="button">Send Message</button>
+    </form>
+</section>
+{% endblock %}

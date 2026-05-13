@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section form-page">
+    <h2>Edit Project</h2>
+    <form action="/admin/edit-project/{{ project.id }}" method="POST" class="form-grid">
+        <label>Project Title</label>
+        <input type="text" name="title" value="{{ project.title }}" required />
+
+        <label>Description</label>
+        <textarea name="description" rows="4" required>{{ project.description }}</textarea>
+
+        <label>Project Link</label>
+        <input type="url" name="link" value="{{ project.link }}" required />
+
+        <button type="submit" class="button">Update Project</button>
+    </form>
+</section>
+{% endblock %}

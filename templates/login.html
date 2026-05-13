@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section auth-page">
+    <h2>Admin Login</h2>
+    <form action="/admin/login" method="POST" class="form-grid">
+        <label>Username</label>
+        <input type="text" name="username" value="admin" required />
+
+        <label>Password</label>
+        <input type="password" name="password" value="admin123" required />
+
+        <button type="submit" class="button">Log In</button>
+    </form>
+    <p class="note">Use the demo credentials above to try the admin panel.</p>
+</section>
+{% endblock %}
